@@ -13,6 +13,13 @@ Support for per-marker customisation of visuals and popup content is included.
 
 ----------
 
+## Changes in this fork
+* `Control.Geocoder.js`
+    * Fix urls in line `343` and `370` to have the address search functioning properly (see https://processwire.com/talk/topic/9745-module-leaflet-map/?do=findComment&comment=234909)
+    * Change address format in line `356` and `383` which then gets saved into `name` (follows standard address format for German addresses)
+* `InputfieldLeafletMapMarker.module`
+    * Fix saving of lat and lng values in line `193-194` (see https://processwire.com/talk/topic/9745-module-leaflet-map/?do=findComment&comment=234773)
+
 ## Installation
 
 1. Copy all of the files for this module into /site/modules/FieldtypeLeafletMapMarker/

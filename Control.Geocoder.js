@@ -340,7 +340,7 @@
         },
 
         geocode: function(query, cb, context) {
-            L.Control.Geocoder.jsonp(this.options.serviceUrl + 'search/', L.extend({
+            L.Control.Geocoder.jsonp(this.options.serviceUrl + 'search', L.extend({
                 q: query,
                 limit: 5,
                 format: 'json',
@@ -353,7 +353,7 @@
                             for (var j = 0; j < 4; j++) bbox[j] = parseFloat(bbox[j]);
                             results[i] = {
                                 icon: data[i].icon,
-                                name: data[i].display_name,
+                                name: `${data[i].address.road} ${data[i].address.house_number ?? ''}, ${data[i].address.postcode} ${data[i].address.city ?? data[i].address.town ?? data[i].address.village}`,
                                 html: this.options.htmlTemplate ?
                                     this.options.htmlTemplate(data[i])
                                     : undefined,
@@ -367,7 +367,7 @@
         },
 
         reverse: function(location, scale, cb, context) {
-            L.Control.Geocoder.jsonp(this.options.serviceUrl + 'reverse/', L.extend({
+            L.Control.Geocoder.jsonp(this.options.serviceUrl + 'reverse', L.extend({
                 lat: location.lat,
                 lon: location.lng,
                 zoom: Math.round(Math.log(scale / 256) / Math.log(2)),
@@ -380,7 +380,7 @@
                 if (data && data.lat && data.lon) {
                     loc = L.latLng(data.lat, data.lon);
                     result.push({
-                        name: data.display_name,
+                        name: `${data[i].address.road} ${data[i].address.house_number ?? ''}, ${data[i].address.postcode} ${data[i].address.city ?? data[i].address.town ?? data[i].address.village}`,
                         html: this.options.htmlTemplate ?
                             this.options.htmlTemplate(data)
                             : undefined,

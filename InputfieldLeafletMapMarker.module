@@ -190,8 +190,8 @@ _OUT;
         $lng = $input["_{$name}_lng"];
 
         $precision = 4;
-        if(	((string) round($lat, $precision)) != ((string) round($this->defaultLat, $precision)) ||
-            ((string) round($lng, $precision)) != ((string) round($this->defaultLng, $precision))) {
+ if( ((string) round(floatval($lat), $precision)) != ((string) round(floatval($this->defaultLat), $precision)) ||
+     ((string) round(floatval($lng), $precision)) != ((string) round(floatval($this->defaultLng), $precision))) {
 
             $marker->set('lat', $lat);
             $marker->set('lng', $lng);
